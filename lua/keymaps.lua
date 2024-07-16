@@ -16,3 +16,17 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- replace every word in the file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Delete all buffers
+---@diagnostic disable-next-line: lowercase-global -- Weird error
+function delete_all_buffers()
+  local buffers = vim.api.nvim_list_bufs()
+  for _, bufnr in ipairs(buffers) do
+    if vim.api.nvim_buf_is_loaded(bufnr) then
+      vim.api.nvim_buf_delete(bufnr, { force = true })
+    end
+  end
+end
+
+vim.api.nvim_set_keymap('n', 'cb', ':lua delete_all_buffers()<CR>', { noremap = true, silent = true })
+
