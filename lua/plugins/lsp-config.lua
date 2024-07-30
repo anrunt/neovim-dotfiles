@@ -44,17 +44,6 @@ return {
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,
         root_dir = lspconfig.util.root_pattern(".git", "tailwind.config.js", "tailwind.config.ts"),
-        settings = {
-          tailwindCSS = {
-            experimental = {
-              classRegex = {
-                { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-                { "cx\\(([^)]*)\\)",  "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-              },
-            },
-            validate = true,
-          },
-        },
         filetypes = {
           "html",
           "javascriptreact",

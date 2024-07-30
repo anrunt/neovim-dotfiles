@@ -37,12 +37,6 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
         }),
-        -- performance:
-        --        performance = {
-        --          debounce = 150,
-        --          throttle = 60,
-        --          fetching_timeout = 200,
-        --        },
       })
     end,
   },
