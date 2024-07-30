@@ -34,15 +34,15 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
-          { name = "luasnip", max_item_count = 5 },
-          { name = "buffer", max_item_count = 5 },
+          { name = "luasnip" },
+          { name = "buffer" },
         }),
         -- performance:
-        performance = {
-          debounce = 150,
-          throttle = 60,
-          fetching_timeout = 200,
-        },
+        --        performance = {
+        --          debounce = 150,
+        --          throttle = 60,
+        --          fetching_timeout = 200,
+        --        },
       })
     end,
   },
