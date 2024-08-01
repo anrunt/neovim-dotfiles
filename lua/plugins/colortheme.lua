@@ -1,9 +1,12 @@
 return {
-  "vague2k/vague.nvim",
+  "craftzdog/solarized-osaka.nvim",
   lazy = false,
   priority = 1000,
   opts = {},
   config = function()
-    vim.cmd.colorscheme("vague")
-  end,
+    require('solarized-osaka').setup({
+      transparent = false
+    })
+    vim.cmd.colorscheme("solarized-osaka")
+  end
 }

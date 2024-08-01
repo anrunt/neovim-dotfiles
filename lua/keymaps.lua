@@ -17,6 +17,9 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 -- replace every word in the file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- LspRestart
+vim.keymap.set("n", "<leader>lr", ":LspRestart<CR>")
+
 -- Delete all buffers
 ---@diagnostic disable-next-line: lowercase-global -- Weird error
 function delete_all_buffers()
