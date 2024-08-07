@@ -6,7 +6,7 @@ return
   opts = {},
   config = function()
     require('solarized-osaka').setup({
-      transparent = false
+      transparent = true
     })
     vim.cmd.colorscheme("solarized-osaka")
   end
