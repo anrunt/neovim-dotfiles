@@ -3,7 +3,9 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        theme = "solarized-osaka",
+        theme = "auto",
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''}
       },
       sections = {
         lualine_a = {'mode'},

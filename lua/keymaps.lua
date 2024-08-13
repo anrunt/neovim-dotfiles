@@ -21,9 +21,9 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>lr", ":LspRestart<CR>")
 
 --Splits
-vim.keymap.set("n", "<leader>vs", ":vs<CR>", { silent = true}) 
+vim.keymap.set("n", "<leader>vs", ":vs<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<leader>cs", ":close<CR>", { silent = true })
-vim.keymap.set('n', '<space>w', '<C-w>w', { noremap = true, silent = true })
+vim.keymap.set('n', '<space>w', '<C-w>w', { silent = true })
 
 -- Delete all buffers
 ---@diagnostic disable-next-line: lowercase-global -- Weird error
