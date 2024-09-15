@@ -16,4 +16,5 @@ local opts = {}
 require("vim-options")
 require("autotag")
 require("keymaps")
+require("ui")
 require("lazy").setup("plugins")
