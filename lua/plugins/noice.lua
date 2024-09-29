@@ -21,7 +21,13 @@ return {
         inc_rename = false,
         lsp_doc_border = false,
       },
-
+      routes = {
+        filter = {
+          event = {"notify" , "msg_show"},
+          find = "No information available",
+        },
+        opts = { skip = true }
+      }
     })
   end,
 }
