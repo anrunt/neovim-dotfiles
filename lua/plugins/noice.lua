@@ -22,12 +22,14 @@ return {
         lsp_doc_border = false,
       },
       routes = {
+        {
         filter = {
-          event = {"notify" , "msg_show"},
-          find = "No information available",
+          event = { "notify", "msg_show" },
+            find = "No information available",
+          },
+          opts = { skip = true },
         },
-        opts = { skip = true }
-      }
+      },
     })
   end,
 }
