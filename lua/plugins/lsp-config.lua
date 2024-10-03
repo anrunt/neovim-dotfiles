@@ -11,7 +11,7 @@ return {
     lazy = false,
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "svelte", "tailwindcss", "html", "cssls" },
+        ensure_installed = { "lua_ls", "svelte", "tailwindcss", "html", "cssls", "pyright" },
       })
     end,
   },
@@ -23,6 +23,10 @@ return {
       local lspconfig = require("lspconfig")
 
       lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.pyright.setup({
         capabilities = capabilities,
       })
 
