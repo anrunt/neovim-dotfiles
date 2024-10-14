@@ -14,6 +14,9 @@ return {
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
 
+        -- C
+        null_ls.builtins.formatting.clang_format,
+
         -- TS etc.
         null_ls.builtins.formatting.prettier,
         require("none-ls.code_actions.eslint_d"),

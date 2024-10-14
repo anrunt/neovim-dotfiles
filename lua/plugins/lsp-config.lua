@@ -11,7 +11,15 @@ return {
     lazy = false,
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "svelte", "tailwindcss", "html", "cssls", "pyright" },
+        ensure_installed = {
+          "lua_ls",
+          "svelte",
+          "tailwindcss",
+          "html",
+          "cssls",
+          "pyright",
+          "clangd",
+        },
       })
     end,
   },
@@ -28,6 +36,13 @@ return {
 
       lspconfig.pyright.setup({
         capabilities = capabilities,
+      })
+
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+        filetypes = {
+          "c"
+        },
       })
 
       --			lspconfig.tsserver.setup({
