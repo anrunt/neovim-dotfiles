@@ -23,9 +23,20 @@ return {
       },
       routes = {
         {
-        filter = {
-          event = { "notify", "msg_show" },
+          event = {
+            "notify", "msg_show"
+          },
+          filter = {
             find = "No information available",
+          },
+          opts = { skip = true },
+        },
+        {
+          event = {
+            "notify", "msg_show"
+          },
+          filter = {
+            find = "written",
           },
           opts = { skip = true },
         },
