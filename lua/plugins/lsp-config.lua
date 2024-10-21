@@ -30,37 +30,12 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
 
-      local function custom_diagnostic_config(client, bufnr)
-        local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
-
-        if ft == "python" or ft == "c" then
-          vim.diagnostic.config({
-            virtual_text = true,
-            signs = true,
-            underline = true,
-            update_in_insert = true,
-            severity_sort = true,
-          }, bufnr)
-        else
-          -- Default diagnostic config for other filetypes
-          vim.diagnostic.config({
-            virtual_text = true,
-            signs = true,
-            underline = true,
-            update_in_insert = false,
-            severity_sort = true,
-          }, bufnr)
-        end
-      end
-
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
-        on_attach = custom_diagnostic_config
       })
 
       lspconfig.pyright.setup({
         capabilities = capabilities,
-        on_attach = custom_diagnostic_config
       })
 
       lspconfig.clangd.setup({
@@ -68,7 +43,6 @@ return {
         filetypes = {
           "c", "cpp", "objc", "objcpp"
         },
-        on_attach = custom_diagnostic_config
       })
 
       --			lspconfig.tsserver.setup({
@@ -79,7 +53,6 @@ return {
       lspconfig.svelte.setup({
         capabilities = capabilities,
         root_dir = require("lspconfig.util").root_pattern(".git"),
-        on_attach = custom_diagnostic_config
       })
 
 --      lspconfig.tailwindcss.setup({
@@ -98,19 +71,16 @@ return {
           "typescript",
           "svelte",
         },
-        on_attach = custom_diagnostic_config
       })
 
       lspconfig.html.setup({
         capabilities = capabilities,
         root_dir = require("lspconfig.util").root_pattern(".git"),
-        on_attach = custom_diagnostic_config
       })
 
       lspconfig.cssls.setup({
         capabilities = capabilities,
         root_dir = require("lspconfig.util").root_pattern(".git"),
-        on_attach = custom_diagnostic_config
       })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
