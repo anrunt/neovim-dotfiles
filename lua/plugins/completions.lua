@@ -3,8 +3,15 @@ return {
     "hrsh7th/cmp-nvim-lsp",
   },
   {
+    "github/copilot.vim",
+    config = function()
+      vim.g.copilot_clear_on_normal_mode = true -- Clear suggestions in normal mode 
+    end
+  },
+  {
     "L3MON4D3/LuaSnip",
-    dependencies = { "saadparwaiz1/cmp_luasnip",
+    dependencies = {
+      "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
     },
   },
@@ -20,10 +27,6 @@ return {
             require("luasnip").lsp_expand(args.body)
           end,
         },
---        window = {
---          completion = cmp.config.window.bordered(),
---          documentation = cmp.config.window.bordered(),
---        },
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
