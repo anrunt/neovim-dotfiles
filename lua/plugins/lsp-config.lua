@@ -19,6 +19,7 @@ return {
           "cssls",
           "pyright",
           "clangd",
+          "gopls"
         },
       })
     end,
@@ -43,6 +44,28 @@ return {
         filetypes = {
           "c", "cpp", "objc", "objcpp"
         },
+        settings = {
+          clangd = {
+            usePlaceholders = false,
+            completeUnimported = true,
+          }
+        }
+      })
+
+      lspconfig.gopls.setup({
+        capabilities = capabilities,
+        filetypes = {
+          "go", "gomod", "gowork","gotmpl"
+        },
+        root_dir = lspconfig.util.root_pattern("go.mod", ".git", "go.work"),
+        settings = {
+          gopls = {
+            completeUnimported = true,
+            analyses = {
+              unusedparams = true,
+            },
+          }
+        }
       })
 
       --			lspconfig.tsserver.setup({

@@ -17,6 +17,10 @@ return {
         -- C
         null_ls.builtins.formatting.clang_format,
 
+        -- Go
+        null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.goimports,
+
         -- TS etc.
         null_ls.builtins.formatting.prettier,
         require("none-ls.code_actions.eslint_d"),
