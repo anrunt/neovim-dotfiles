@@ -18,7 +18,10 @@ return {
         null_ls.builtins.formatting.clang_format,
 
         -- Go
-        null_ls.builtins.formatting.gofmt,
+        --null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.gofumpt.with({
+          extra_args = { "-s" },
+        }),
         null_ls.builtins.formatting.goimports,
 
         -- TS etc.
@@ -27,6 +30,10 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+    --vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+    vim.keymap.set("n", "<leader>gf", function()
+      vim.lsp.buf.format()
+      vim.cmd("retab")
+    end, {})
   end,
 }
