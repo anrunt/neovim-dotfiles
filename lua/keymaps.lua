@@ -28,6 +28,12 @@ vim.keymap.set("n", "<leader>vs", ":vs<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<leader>cs", ":close<CR>", { silent = true })
 vim.keymap.set('n', '<space>w', '<C-w>w', { silent = true })
 
+-- Resize splits
+vim.keymap.set("n", "<leader><Left>", ":vertical resize -5<CR>", { noremap = true, silent = true, desc = "Decrease split width" })
+vim.keymap.set("n", "<leader><Right>", ":vertical resize +5<CR>", { noremap = true, silent = true, desc = "Increase split width" })
+vim.keymap.set("n", "<leader><Up>", ":resize +5<CR>", { noremap = true, silent = true, desc = "Increase split height" })
+vim.keymap.set("n", "<leader><Down>", ":resize -5<CR>", { noremap = true, silent = true, desc = "Decrease split height" })
+
 -- Delete all buffers
 ---@diagnostic disable-next-line: lowercase-global -- Weird error
 function delete_all_buffers()

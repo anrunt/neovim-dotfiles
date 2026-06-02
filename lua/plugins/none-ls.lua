@@ -33,7 +33,7 @@ return {
     --vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
     vim.keymap.set("n", "<leader>gf", function()
       vim.lsp.buf.format()
-      vim.cmd("retab")
+      --vim.cmd("retab")
     end, {})
   end,
 }

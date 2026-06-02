@@ -21,6 +21,9 @@ return {
           "clangd",
           "gopls"
         },
+        -- Servers are configured manually below. Keep mason from enabling
+        -- installed servers like ts_ls alongside typescript-tools.nvim.
+        automatic_enable = false,
       })
     end,
   },
