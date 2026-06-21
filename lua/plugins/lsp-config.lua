@@ -32,82 +32,78 @@ return {
     lazy = false,
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
-
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-
-      lspconfig.pyright.setup({
-        capabilities = capabilities,
-      })
-
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-        filetypes = {
-          "c", "cpp", "objc", "objcpp"
+      local tailwind_capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
+        textDocument = {
+          colorProvider = {
+            dynamicRegistration = true,
+          },
         },
-        settings = {
-          clangd = {
-            usePlaceholders = false,
-            completeUnimported = true,
+      })
+
+      local servers = {
+        lua_ls = {
+          capabilities = capabilities,
+        },
+        pyright = {
+          capabilities = capabilities,
+        },
+        clangd = {
+          capabilities = capabilities,
+          filetypes = {
+            "c", "cpp", "objc", "objcpp"
+          },
+          settings = {
+            clangd = {
+              usePlaceholders = false,
+              completeUnimported = true,
+            }
           }
-        }
-      })
-
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-        filetypes = {
-          "go", "gomod", "gowork","gotmpl"
         },
-        root_dir = lspconfig.util.root_pattern("go.mod", ".git", "go.work"),
-        settings = {
-          gopls = {
-            completeUnimported = true,
-            analyses = {
-              unusedparams = true,
-            },
+        gopls = {
+          capabilities = capabilities,
+          filetypes = {
+            "go", "gomod", "gowork", "gotmpl"
+          },
+          root_markers = { "go.mod", ".git", "go.work" },
+          settings = {
+            gopls = {
+              completeUnimported = true,
+              analyses = {
+                unusedparams = true,
+              },
+            }
           }
-        }
-      })
-
-      --			lspconfig.tsserver.setup({
-      --				capabilities = capabilities,
-      --				root_dir = require("lspconfig.util").root_pattern(".git"),
-      --			})
-
-      lspconfig.svelte.setup({
-        capabilities = capabilities,
-        root_dir = require("lspconfig.util").root_pattern(".git"),
-      })
-
---      lspconfig.tailwindcss.setup({
---        capabilities = capabilities,
---        root_dir = require("lspconfig.util").root_pattern(".git"),
---      })
-
-      lspconfig.tailwindcss.setup({
-        capabilities = capabilities,
-        root_dir = lspconfig.util.root_pattern(".git", "tailwind.config.js", "tailwind.config.ts"),
-        filetypes = {
-          "html",
-          "javascriptreact",
-          "typescriptreact",
-          "javascript",
-          "typescript",
-          "svelte",
         },
-      })
+        svelte = {
+          capabilities = capabilities,
+          root_markers = { ".git" },
+        },
+        tailwindcss = {
+          capabilities = tailwind_capabilities,
+          root_markers = { ".git", "tailwind.config.js", "tailwind.config.ts" },
+          filetypes = {
+            "html",
+            "javascriptreact",
+            "typescriptreact",
+            "javascript",
+            "typescript",
+            "svelte",
+          },
+        },
+        html = {
+          capabilities = capabilities,
+          root_markers = { ".git" },
+        },
+        cssls = {
+          capabilities = capabilities,
+          root_markers = { ".git" },
+        },
+      }
 
-      lspconfig.html.setup({
-        capabilities = capabilities,
-        root_dir = require("lspconfig.util").root_pattern(".git"),
-      })
-
-      lspconfig.cssls.setup({
-        capabilities = capabilities,
-        root_dir = require("lspconfig.util").root_pattern(".git"),
-      })
+      for server, config in pairs(servers) do
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
+      end
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
