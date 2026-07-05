@@ -19,7 +19,8 @@ return {
           "cssls",
           "pyright",
           "clangd",
-          "gopls"
+          "gopls",
+          "rust_analyzer"
         },
         -- Servers are configured manually below. Keep mason from enabling
         -- installed servers like ts_ls alongside typescript-tools.nvim.
@@ -73,6 +74,9 @@ return {
               },
             }
           }
+        },
+        rust_analyzer = {
+          capabilities = capabilities,
         },
         svelte = {
           capabilities = capabilities,

@@ -2,16 +2,16 @@ vim.cmd("set noexpandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
-vim.opt.guicursor = ""
+--vim.opt.guicursor = ""
 vim.opt.nu = true
 --vim.opt.tabstop = 4
 --vim.opt.softtabstop = 4
 --vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
--- Sets cursor to be block always
---vim.cmd("set guicursor=n-v-c-i:block")
---vim.cmd("set guicursor=i:hor10")
+--vim.cmd("set guicursor=n-v-c-i:block") --block
+--vim.cmd("set guicursor=i:hor10") --underscore
+vim.cmd("set guicursor=i:ver25") -- vertical
 vim.opt.wrap = false
 vim.g.mapleader = " "
 vim.opt.number = true
