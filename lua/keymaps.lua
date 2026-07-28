@@ -23,6 +23,13 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- LspRestart
 vim.keymap.set("n", "<leader>lr", ":LspRestart<CR>")
 
+-- Toggle word wrap
+vim.keymap.set("n", "<leader>k", function()
+  vim.wo.wrap = not vim.wo.wrap
+  vim.wo.linebreak = vim.wo.wrap
+  vim.wo.breakindent = vim.wo.wrap
+end, { desc = "Toggle word wrap" })
+
 --Splits
 vim.keymap.set("n", "<leader>vs", ":vs<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<leader>cs", ":close<CR>", { silent = true })
