@@ -18,6 +18,7 @@ return {
           "html",
           "cssls",
           "pyright",
+          "ruff",
           "clangd",
           "gopls",
           "rust_analyzer"
@@ -47,6 +48,15 @@ return {
         },
         pyright = {
           capabilities = capabilities,
+        },
+        ruff = {
+          capabilities = capabilities,
+          on_attach = function(client)
+            -- Keep documentation with Pyright and formatting with Black/isort.
+            client.server_capabilities.hoverProvider = false
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end,
         },
         clangd = {
           capabilities = capabilities,
