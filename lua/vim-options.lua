@@ -13,13 +13,13 @@ vim.g.python_indent = {
   closed_paren_align_last_line = false,
   open_paren = "shiftwidth()",
 }
---vim.cmd("set guicursor=n-v-c-i:block") --block
+vim.cmd("set guicursor=n-v-c-i:block") --block
 --vim.cmd("set guicursor=i:hor10") --underscore
-vim.cmd("set guicursor=i:ver25") -- vertical
+--vim.cmd("set guicursor=i:ver25") -- vertical
 vim.opt.wrap = false
 vim.g.mapleader = " "
 vim.opt.number = true
-vim.opt.cursorline = true
+--vim.opt.cursorline = true
 vim.wo.relativenumber = true
 vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "80"
